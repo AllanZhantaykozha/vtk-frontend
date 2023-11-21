@@ -1,0 +1,25 @@
+.header {
+    height: 80px;
+    line-height: 80px;
+    color: #333;
+    
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 100px;
+
+    .logo {
+        font-size: 26px;
+        font-weight: 600;
+    }
+
+    .links {
+        display: flex;
+        
+        .link {
+            padding: 0 25px;
+            justify-content: space-between;
+        }
+    }
+
+}

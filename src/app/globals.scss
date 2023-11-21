@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: #000;
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f4ec;
+}
+
+a {
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease; /* Время изменения цвета */
+}
+a:hover {
+  color: #f65252; /* Меняем цвет ссылки */
+}

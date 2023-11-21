@@ -1,0 +1,27 @@
+.wrapper {
+  border: 2px solid #cfcfcf;
+  padding: 25px;
+  border-radius: 20px;
+
+  .inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    div {
+      padding: 25px;
+
+      .input {
+        background-color: #f5f4f4;
+        border-radius: 10px;
+        padding: 5px;
+        .name {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .btn {
+    background-color: #ccc;
+  }
+}
