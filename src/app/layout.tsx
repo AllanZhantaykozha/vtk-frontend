@@ -3,6 +3,8 @@ import { Montserrat } from "next/font/google";
 import "./globals.scss";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import TanstackProvider from "@/providers/TanstackProvider";
 
 const fonts = Montserrat({
   subsets: ["latin"],
@@ -21,17 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link
-          rel="shortcut icon"
-          href="../../static/vtk-k-logo.png"
-          type="image/x-icon"
-        />
-      </head>
       <body className={fonts.className}>
-        <Header />
-        <div className="main">{children}</div>
-        <Footer />
+        <TanstackProvider>
+          <Header />
+          <div className="main">{children}</div>
+          <Footer />
+        </TanstackProvider>
       </body>
     </html>
   );

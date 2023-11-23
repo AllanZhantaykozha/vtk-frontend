@@ -1,8 +1,8 @@
 import axios from "axios";
 import { errorCatch, getContentType } from "./api.helper";
-import { removeTokens } from "./auth.helper";
-import { getAcessToken } from "./auth.helper";
+import { Token } from "./auth.helper";
 import { ProfileService } from "./services/profile.service";
+import { AuthService } from "./services/auth.service";
 
 export const instance = axios.create({
   baseURL: process.env.SERVER_URL,
@@ -10,7 +10,7 @@ export const instance = axios.create({
 });
 
 instance.interceptors.request.use(async (config) => {
-  const accessToken = getAcessToken();
+  const accessToken = Token.getAcessToken();
 
   if (config.headers && accessToken) {
     config.headers.Authorization = `Bearer ${accessToken}`;
@@ -33,11 +33,11 @@ instance.interceptors.response.use(
     ) {
       originalRequest._isRetry = true;
       try {
-        ProfileService.getNewTokens();
+        AuthService.getNewTokens();
         return instance.request(originalRequest);
       } catch (error) {
         if (errorCatch(error) === "jwt expired") {
-          removeTokens();
+          Token.removeTokens();
         }
       }
     }

@@ -3,10 +3,7 @@ import { instance } from "../api.interceptor";
 export const PostService = {
   async getAll() {
     try {
-      const getData = (await instance({ url: "post", method: "GET" })).data;
-
-      const [data] = await Promise.all([getData]);
-
+      const { data } = await instance({ url: "post", method: "GET" });
       return data;
     } catch (error) {
       console.log(error);
@@ -14,10 +11,7 @@ export const PostService = {
   },
   async byId(id: number) {
     try {
-      const getData = (await instance({ url: `post/id/${id}`, method: "GET" }))
-        .data;
-
-      const [data] = await Promise.all([getData]);
+      const { data } = await instance({ url: `post/id/${id}`, method: "GET" });
       return data;
     } catch (error) {
       console.log(error);

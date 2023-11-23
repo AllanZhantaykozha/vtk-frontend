@@ -1,19 +1,18 @@
+import { IUpdateTeacher } from "@/types/update.interface";
 import { instance } from "../api.interceptor";
 
-export async function update(data: {
-  firstname: string;
-  secondname: string;
-  surname: string;
-  description: string;
-  jobName: string;
-  group: string;
-  cellNumber: string;
-}) {
-  try {
-    await instance({ url: "teacher", method: "PUT", data });
+export const UpdateService = {
+  async update(updateData: IUpdateTeacher) {
+    try {
+      const { data } = await instance({
+        url: "teacher",
+        method: "PUT",
+        data: updateData,
+      });
 
-    return "success";
-  } catch (error) {
-    console.log(error);
-  }
-}
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+};

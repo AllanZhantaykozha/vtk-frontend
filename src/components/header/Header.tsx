@@ -1,15 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./Header.module.scss";
-import { useAuth } from "@/hooks/useAuth";
+import { Token } from "@/api/auth.helper";
 
-export default async function Header() {
+export default function Header() {
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
         <Link href={"/"}>ВТК-К</Link>
       </div>
       <ul className={styles.links}>
-        {(await useAuth()) ? (
+        {Token.getAcessToken() ? (
           <li className={styles.link}>
             <Link href={"/profile"}>Профиль</Link>
           </li>
@@ -21,7 +23,7 @@ export default async function Header() {
           <Link href={"/posts"}>Посты</Link>
         </li>
         <li className={styles.link}>
-          <Link href={"/auth/login"}>Логин</Link>
+          <Link href={"/login"}>Логин</Link>
         </li>
       </ul>
     </div>
